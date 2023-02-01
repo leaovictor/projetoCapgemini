@@ -29,6 +29,7 @@ public class Task {
 
     public Task () {
         this.createdAt = new Date();
+
     }
 
     public int getId() {
@@ -71,12 +72,12 @@ public class Task {
         this.notes = notes;
     }
 
-    public Boolean getCompleted() {
+    public Boolean getIsCompleted() {
         return isCompleted;
     }
 
-    public void setCompleted(Boolean completed) {
-        isCompleted = completed;
+    public void setIsCompleted(Boolean isCompleted) {
+        this.isCompleted = isCompleted;
     }
 
     public Date getDeadline() {
@@ -117,4 +118,6 @@ public class Task {
                 ", updatedAt=" + updatedAt +
                 '}';
     }
+
+
 }
