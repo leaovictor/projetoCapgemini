@@ -65,7 +65,7 @@ public class TaskControler {
             statement.setString(2, task.getName());
             statement.setString(3, task.getDescription());
             statement.setString(4, task.getNotes());
-            statement.setBoolean(5, task.getCompleted());
+            statement.setBoolean(5, task.getIsCompleted());
             statement.setDate(6, new Date(task.getDeadline().getTime()));
             statement.setDate(7, new Date(task.getCreatedAt().getTime()));
             statement.setDate(8, new Date(task.getUpdatedAt().getTime()));
@@ -122,7 +122,7 @@ public class TaskControler {
 
                 tasks.add(task);
 
-                PARADO NA  11G
+                // PARADO NA  11G
 
 
             }
