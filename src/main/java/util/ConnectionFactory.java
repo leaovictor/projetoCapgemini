@@ -21,6 +21,17 @@ public class ConnectionFactory {
         }
     }
 
+    public static void closeConnection(Connection connection) {
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+
+        } catch (Exception ex) {
+            throw new RuntimeException("Erro ao fechar conexão com o banco de dados");
+        }
+    }
+
     public static void closeConnection(Connection connection, PreparedStatement statement) {
         try {
             if (connection != null) {

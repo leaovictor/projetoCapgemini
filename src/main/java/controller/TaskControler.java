@@ -36,7 +36,7 @@ public class TaskControler {
             statement.setDate(7, new Date(task.getCreatedAt().getTime()));
             statement.setDate(8, new Date(task.getUpdatedAt().getTime()));
             statement.execute();
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             throw new RuntimeException("Erro ao salvar a tarefa " + ex.getMessage(), ex);
         } finally {
             ConnectionFactory.closeConnection(connection, statement);
@@ -46,21 +46,32 @@ public class TaskControler {
 
     public void update(Task task) {
 
+        String sql = "UPDATE tasks SET " +
+                "idProject = ?, " +
+                "name = ? " +
+                "description = ? " +
+                "notes = ? " +
+                "deadline = ? " +
+                "completed = ? " +
+                "createdAt = ? " +
+                "updatedAt = ?" +
+                "WHERE id = ?";
+
     }
 
     public void removeById(int taskId) throws SQLException {
         String sql = "DELETE FROM tasks WHERE id = ?";
-        Connection conn = null;
+        Connection connection = null;
         PreparedStatement statement = null;
         try {
-            conn = ConnectionFactory.getConnection();
-            statement = conn.prepareStatement(sql);
+            connection = ConnectionFactory.getConnection();
+            statement = connection.prepareStatement(sql);
             statement.setInt(1, taskId);
             statement.execute();
-        } catch (SQLException e) {
-            throw new SQLException("Erro ao deletar a tarefa");
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao deletar a tarefa");
         } finally {
-            ConnectionFactory.closeConnection(conn);
+            ConnectionFactory.closeConnection(connection, statement);
         }
     }
 
