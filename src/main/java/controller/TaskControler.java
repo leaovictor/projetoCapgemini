@@ -99,6 +99,7 @@ public class TaskControler {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
 
+        // Lista de tarefas que será deevolvida quando a chamada do método acontecer
         List<Task> tasks = new ArrayList<Task>();
 
         try {
@@ -122,15 +123,16 @@ public class TaskControler {
 
                 tasks.add(task);
 
-                // PARADO NA  11G
+                // PARADO NA  11H
 
 
             }
 
         } catch (Exception ex) {
-
+            throw new RuntimeException("Erro ao deletar a tarefa" + ex.getMessage(), ex);
+        } finally {
+            ConnectionFactory.closeConnection(connection, statement);
         }
-
 
         return null;
     }
