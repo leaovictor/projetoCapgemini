@@ -1,5 +1,15 @@
-package org.example;public class Main {
+package org.example;
+
+import controller.ProjectController;
+import model.Project;
+
+public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        ProjectController projectController = new ProjectController();
+
+        Project project = new Project();
+        project.setName("Projeto teste");
+        project.setDescription("description");
+        projectController.save(project);
     }
 }

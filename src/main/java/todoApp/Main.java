@@ -1,13 +1,21 @@
 package todoApp;
 
+import controller.ProjectController;
+import model.Project;
 import util.ConnectionFactory;
 import java.sql.Connection;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        Connection c = ConnectionFactory.getConnection();
+        ProjectController projectController = new ProjectController();
 
-        ConnectionFactory.closeConnection(c);
+        Project project = new Project();
+        project.setName("Projeto teste");
+        project.setDescription("description");
+        projectController.save(project);
+
+
     }
 }
